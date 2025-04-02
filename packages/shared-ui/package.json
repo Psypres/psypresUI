@@ -1,0 +1,9 @@
+{
+  "name": "@psypres/shared-ui",
+  "version": "1.0.0",
+  "main": "hello-button.js",
+  "exports": {
+    ".": "./hello-button.js"
+  },
+  "dependencies": {}
+}
