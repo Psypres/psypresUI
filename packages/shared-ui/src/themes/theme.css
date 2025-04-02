@@ -74,6 +74,20 @@
   --psypres-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
 }
 
+/* 
+ * Apply theme to document body and ensure elements inherit theme colors
+ * This makes the theme change immediately visible to users
+ */
+:root[data-theme="light"] body {
+  background-color: var(--psypres-bg-color);
+  color: var(--psypres-text-color);
+}
+
+:root[data-theme="dark"] body {
+  background-color: var(--psypres-bg-color);
+  color: var(--psypres-text-color);
+}
+
 /* Transitions */
 *, *::before, *::after {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;

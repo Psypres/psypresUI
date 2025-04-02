@@ -10,6 +10,7 @@ export const DARK_THEME = 'dark';
 
 // Send theme change events
 export function dispatchThemeChangeEvent(theme) {
+  console.log('Dispatching theme change event:', theme);
   const event = new CustomEvent(THEME_CHANGE_EVENT, { 
     bubbles: true, 
     composed: true,
@@ -25,7 +26,21 @@ export class PsypresThemeProvider extends HTMLElement {
     this._shadow = this.attachShadow({ mode: 'open' });
     this._theme = this._getInitialTheme();
     this._render();
+  }
+
+  connectedCallback() {
     this._setupListeners();
+    // Set initial theme
+    this._updateTheme(this._theme);
+    console.log('ThemeProvider connected, initial theme:', this._theme);
+  }
+
+  disconnectedCallback() {
+    // Clean up event listeners
+    document.removeEventListener(THEME_CHANGE_EVENT, this._handleThemeChange);
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', this._handleSystemPreferenceChange);
+    }
   }
 
   static get observedAttributes() {
@@ -38,44 +53,56 @@ export class PsypresThemeProvider extends HTMLElement {
 
   set theme(value) {
     this.setAttribute('theme', value);
-    this._theme = value;
-    this._updateTheme(value);
+  }
+
+  _handleThemeChange = (event) => {
+    console.log('ThemeProvider received theme change event:', event.detail.theme);
+    this.theme = event.detail.theme;
+    this._theme = event.detail.theme;
+    this._updateTheme(event.detail.theme);
+  }
+
+  _handleSystemPreferenceChange = (e) => {
+    if (!localStorage.getItem('psypres-theme')) {
+      // Only update if user hasn't manually set a preference
+      const newTheme = e.matches ? DARK_THEME : LIGHT_THEME;
+      console.log('System preference changed, updating to:', newTheme);
+      this.theme = newTheme;
+    }
   }
 
   _getInitialTheme() {
     // Check for stored preference
     const storedTheme = localStorage.getItem('psypres-theme');
     if (storedTheme) {
+      console.log('Using stored theme preference:', storedTheme);
       return storedTheme;
     }
     
     // Check for system preference using ThemeUtils
     if (ThemeUtils.systemPrefersDarkMode()) {
+      console.log('Using system dark mode preference');
       return DARK_THEME;
     }
     
     // Default to light
+    console.log('Using default light theme');
     return LIGHT_THEME;
   }
 
   _setupListeners() {
     // Listen to theme change events from other components
-    document.addEventListener(THEME_CHANGE_EVENT, (event) => {
-      this.theme = event.detail.theme;
-    });
+    document.addEventListener(THEME_CHANGE_EVENT, this._handleThemeChange);
 
     // Listen for system preference changes
     if (window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('psypres-theme')) {
-          // Only update if user hasn't manually set a preference
-          this.theme = e.matches ? DARK_THEME : LIGHT_THEME;
-        }
-      });
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', this._handleSystemPreferenceChange);
     }
   }
 
   _updateTheme(theme) {
+    console.log('ThemeProvider updating theme to:', theme);
+    
     // Store preference
     localStorage.setItem('psypres-theme', theme);
     
@@ -84,21 +111,15 @@ export class PsypresThemeProvider extends HTMLElement {
     
     // Apply contrast colors using ThemeUtils
     setTimeout(() => ThemeUtils.applyContrastColors(), 0);
-    
-    // Dispatch event for other components
-    dispatchThemeChangeEvent(theme);
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'theme' && oldValue !== newValue) {
+      console.log('ThemeProvider attribute changed from', oldValue, 'to', newValue);
+      this._theme = newValue;
       this._updateTheme(newValue);
     }
     this._render();
-  }
-
-  connectedCallback() {
-    // Set initial theme
-    this._updateTheme(this._theme);
   }
 
   _getStyles() {
