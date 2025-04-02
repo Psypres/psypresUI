@@ -6,10 +6,23 @@
   "scripts": {
     "build": "pnpm --filter=\"@psypres/*\" run build",
     "dev": "pnpm --filter=\"@psypres/*\" run dev",
+    "dev:docs": "pnpm --filter=\"@psypres/docs\" run dev",
+    "build:shared": "pnpm --filter=\"@psypres/shared-ui\" run build",
+    "build:react": "pnpm --filter=\"@psypres/react\" run build",
+    "build:vue": "pnpm --filter=\"@psypres/vue\" run build",
+    "build:all": "pnpm build:shared && pnpm build:react && pnpm build:vue",
+    "start": "pnpm build:all && pnpm dev:docs",
     "test": "pnpm --filter=\"@psypres/*\" run test",
     "clean": "pnpm --filter=\"@psypres/*\" run clean",
     "lint": "pnpm --filter=\"@psypres/*\" run lint",
-    "publish-packages": "pnpm build && pnpm publish -r"
+    "publish-packages": "pnpm build && pnpm publish -r",
+    "clean:shared": "rimraf packages/shared-ui/node_modules packages/shared-ui/dist",
+    "clean:react": "rimraf packages/react/node_modules packages/react/dist",
+    "clean:vue": "rimraf packages/vue/node_modules packages/vue/dist",
+    "clean:docs": "rimraf packages/docs/node_modules packages/docs/dist",
+    "clean:all": "rimraf node_modules && pnpm clean:shared && pnpm clean:react && pnpm clean:vue && pnpm clean:docs && rimraf pnpm-lock.yaml",
+    "cleanup": "pnpm clean:all",
+    "setup-and-start": "pnpm install && pnpm build:shared && pnpm build:react && pnpm build:vue && pnpm dev:docs"
   },
   "keywords": [
     "ui",
@@ -23,6 +36,7 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.0.0",
-    "vite": "^4.4.9"
+    "vite": "^4.4.9",
+    "rimraf": "^5.0.0"
   }
 } 

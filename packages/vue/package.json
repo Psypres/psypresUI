@@ -20,7 +20,7 @@
     "dev": "vite build --watch"
   },
   "dependencies": {
-    "@psypres/shared-ui": "1.0.0"
+    "@psypres/shared-ui": "workspace:*"
   },
   "peerDependencies": {
     "vue": "^3.2.0"

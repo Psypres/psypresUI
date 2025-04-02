@@ -11,6 +11,8 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'js'}`,
       formats: ['es', 'cjs'],
     },
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
       external: ['vue', '@psypres/shared-ui'],
       output: {
@@ -18,6 +20,7 @@ export default defineConfig({
           vue: 'Vue',
           '@psypres/shared-ui': 'PsypresSharedUI',
         },
+        preserveModules: false,
       },
     },
   },

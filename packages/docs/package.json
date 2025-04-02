@@ -8,8 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@psypres/react": "1.0.0",
-    "@psypres/vue": "1.0.0",
+    "@psypres/react": "workspace:*",
+    "@psypres/vue": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vue": "^3.3.0"
