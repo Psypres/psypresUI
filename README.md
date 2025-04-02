@@ -1,97 +1,123 @@
-# PsypresUI - Cross-Platform UI Component Library
+# PsypresUI
 
-A modern, customizable UI component library that works across multiple frontend frameworks.
+A cross-platform UI component library for building modern, accessible user interfaces. PsypresUI follows a framework-agnostic approach with shared UI components and framework-specific wrappers for React and Vue.
 
-## Features
+## Components
 
-- 🚀 Cross-framework compatibility (React, Vue, Nuxt)
-- 📱 Support for web and native platforms
-- 🔄 Shared core functionality
-- 🎨 Consistent styling and behavior
-- 📦 Easy to import and use
+The library includes the following components:
 
-## Project Structure
+- **Button**: Customizable button component with different variants and sizes
+- **Header**: Navigation header with customizable title and navigation items
+- **ThemeProvider**: Provider component for theme context and dark/light mode switching
+- **ThemeToggle**: Toggle component for switching between light and dark themes
 
-```
-packages/
-├── core/          # Core utilities and functions
-├── shared-ui/     # Framework-agnostic UI components
-├── react/         # React-specific implementations
-├── vue/           # Vue-specific implementations
-├── nuxt/          # Nuxt-specific implementations
-└── native/        # React Native implementations
-```
+## Architecture
 
-## Getting Started
+PsypresUI follows a monorepo architecture with the following packages:
 
-### Installation
+- **@psypres/ui**: Core package with framework-agnostic web components
+- **@psypres/react**: React wrappers for PsypresUI components
+- **@psypres/vue**: Vue wrappers for PsypresUI components
+- **@psypres/docs**: Documentation site built with React
+- **@psypres/docs-vue**: Documentation site built with Vue
 
-```bash
-# Install the React components
-npm install @psypres/react
+## Usage
 
-# Install the Vue components
-npm install @psypres/vue
-
-# Install the Nuxt components
-npm install @psypres/nuxt
-
-# Install the React Native components
-npm install @psypres/native
-```
-
-### Usage
-
-#### React
+### React
 
 ```jsx
-import { Button } from "@psypres/react";
+import {
+  PsypresButton,
+  PsypresHeader,
+  PsypresThemeProvider,
+  PsypresThemeToggle,
+} from "@psypres/react";
 
 function App() {
-  return <Button onClick={() => alert("Clicked!")}>Click Me</Button>;
+  return (
+    <PsypresThemeProvider>
+      <div className="app">
+        <PsypresHeader title="My App" />
+        <div className="theme-control">
+          <PsypresThemeToggle size="medium" />
+        </div>
+        <main>
+          <PsypresButton variant="primary">Click Me</PsypresButton>
+        </main>
+      </div>
+    </PsypresThemeProvider>
+  );
 }
 ```
 
-#### Vue
+### Vue
 
 ```vue
 <template>
-  <PsypresButton @click="handleClick"> Click Me </PsypresButton>
+  <PsypresThemeProvider>
+    <div class="app">
+      <PsypresHeader title="My App" />
+      <div class="theme-control">
+        <PsypresThemeToggle size="medium" />
+      </div>
+      <main>
+        <PsypresButton variant="primary">Click Me</PsypresButton>
+      </main>
+    </div>
+  </PsypresThemeProvider>
 </template>
 
 <script>
-import { PsypresButton } from "@psypres/vue";
+import {
+  PsypresButton,
+  PsypresHeader,
+  PsypresThemeProvider,
+  PsypresThemeToggle,
+} from "@psypres/vue";
 
 export default {
   components: {
     PsypresButton,
-  },
-  methods: {
-    handleClick() {
-      alert("Clicked!");
-    },
+    PsypresHeader,
+    PsypresThemeProvider,
+    PsypresThemeToggle,
   },
 };
 </script>
 ```
 
+## Theme Support
+
+PsypresUI supports light and dark themes through the `ThemeProvider` component. The theme provider sets a `data-theme` attribute on the root element that can be used for CSS theme customization.
+
+Example CSS variables in your application:
+
+```css
+:root {
+  /* Light theme variables */
+  --bg-color: #ffffff;
+  --text-color: #333333;
+}
+
+[data-theme="dark"] {
+  /* Dark theme variables */
+  --bg-color: #1a202c;
+  --text-color: #e2e8f0;
+}
+```
+
 ## Development
+
+### Prerequisites
+
+- Node.js 16+
+- npm or yarn
 
 ### Setup
 
-```bash
-# Install dependencies
-pnpm install
-
-# Build all packages
-pnpm run build
-```
-
-### Adding New Components
-
-1. First, add the component to the appropriate package
-2. Update the package's index.js to export the new component
-3. Build the package: `pnpm run build --filter=@psypres/[package-name]`
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start development server: `npm start`
 
 ## License
 
