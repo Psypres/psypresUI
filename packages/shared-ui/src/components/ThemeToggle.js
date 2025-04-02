@@ -1,4 +1,5 @@
 import { THEME_CHANGE_EVENT, LIGHT_THEME, DARK_THEME, dispatchThemeChangeEvent } from './ThemeProvider.js';
+import '../themes/theme.css';
 
 export class PsypresThemeToggle extends HTMLElement {
   constructor() {
@@ -46,8 +47,10 @@ export class PsypresThemeToggle extends HTMLElement {
   
   _updateToggleState() {
     const toggler = this._shadow.querySelector('.toggle-icon');
-    if (toggler) {
+    const wrapper = this._shadow.querySelector('.toggle-wrapper');
+    if (toggler && wrapper) {
       toggler.classList.toggle('toggled', this._currentTheme === DARK_THEME);
+      wrapper.classList.toggle('dark', this._currentTheme === DARK_THEME);
     }
   }
 
@@ -55,6 +58,15 @@ export class PsypresThemeToggle extends HTMLElement {
     this._shadow.querySelector('.toggle-wrapper').addEventListener('click', () => {
       const newTheme = this._currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
       dispatchThemeChangeEvent(newTheme);
+    });
+
+    // Add keyboard support
+    this._shadow.querySelector('.toggle-wrapper').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const newTheme = this._currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+        dispatchThemeChangeEvent(newTheme);
+      }
     });
   }
 
@@ -78,14 +90,19 @@ export class PsypresThemeToggle extends HTMLElement {
         width: ${size};
         height: ${size};
         border-radius: 50%;
-        background: #f1f1f1;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(40deg, #f8f8f8, #ffffff);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         overflow: hidden;
+        user-select: none;
+      }
+      
+      .toggle-wrapper.dark {
+        background: linear-gradient(40deg, #2b3c5a, #3c4f6d);
       }
       
       .toggle-wrapper:hover {
@@ -126,26 +143,21 @@ export class PsypresThemeToggle extends HTMLElement {
         top: 0;
         left: 0;
         z-index: -1;
-        background: radial-gradient(
-          circle, 
-          transparent 45%, 
-          #FFB700 45%, 
-          #FFB700 55%, 
-          transparent 55%
+        background: repeating-conic-gradient(
+          #FFB700 0deg,
+          #FFB700 10deg,
+          transparent 10deg,
+          transparent 50deg
         );
-        background-size: 20% 20%;
+        opacity: 0.8;
         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
       
       /* Dark mode - Morphing to Moon */
-      .toggle-wrapper {
-        background: linear-gradient(40deg, #2b3c5a, #3c4f6d);
-      }
-      
       .toggle-icon.toggled::before {
         background-color: #D8D8D8;
-        box-shadow: 0 0 10px #D8D8D8;
-        transform: scale(0.85);
+        box-shadow: 0 0 10px rgba(216, 216, 216, 0.5);
+        transform: scale(0.85) translateX(15%);
       }
       
       .toggle-icon.toggled::after {
@@ -159,7 +171,7 @@ export class PsypresThemeToggle extends HTMLElement {
         background-color: #BBBBBB;
         border-radius: 50%;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease 0.2s;
       }
       
       .crater-1 {
@@ -192,7 +204,7 @@ export class PsypresThemeToggle extends HTMLElement {
   _render() {
     this._shadow.innerHTML = `
       <style>${this._getStyles()}</style>
-      <div class="toggle-wrapper" role="button" tabindex="0" aria-label="Toggle dark mode">
+      <div class="toggle-wrapper ${this._currentTheme === DARK_THEME ? 'dark' : ''}" role="button" tabindex="0" aria-label="Toggle dark mode" aria-pressed="${this._currentTheme === DARK_THEME ? 'true' : 'false'}">
         <div class="toggle-icon ${this._currentTheme === DARK_THEME ? 'toggled' : ''}">
           <div class="crater crater-1"></div>
           <div class="crater crater-2"></div>

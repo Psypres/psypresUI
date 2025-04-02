@@ -1,4 +1,7 @@
 // Theme event for communication between components
+import '../themes/theme.css';
+import { ThemeUtils } from '../themes/ThemeUtils.js';
+
 export const THEME_CHANGE_EVENT = 'psypres-theme-change';
 
 // Theme constants
@@ -46,8 +49,8 @@ export class PsypresThemeProvider extends HTMLElement {
       return storedTheme;
     }
     
-    // Check for system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // Check for system preference using ThemeUtils
+    if (ThemeUtils.systemPrefersDarkMode()) {
       return DARK_THEME;
     }
     
@@ -60,6 +63,16 @@ export class PsypresThemeProvider extends HTMLElement {
     document.addEventListener(THEME_CHANGE_EVENT, (event) => {
       this.theme = event.detail.theme;
     });
+
+    // Listen for system preference changes
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('psypres-theme')) {
+          // Only update if user hasn't manually set a preference
+          this.theme = e.matches ? DARK_THEME : LIGHT_THEME;
+        }
+      });
+    }
   }
 
   _updateTheme(theme) {
@@ -68,6 +81,9 @@ export class PsypresThemeProvider extends HTMLElement {
     
     // Apply theme to document
     document.documentElement.setAttribute('data-theme', theme);
+    
+    // Apply contrast colors using ThemeUtils
+    setTimeout(() => ThemeUtils.applyContrastColors(), 0);
     
     // Dispatch event for other components
     dispatchThemeChangeEvent(theme);

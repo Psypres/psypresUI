@@ -64,11 +64,19 @@ A provider component that adds theme support to your application, allowing for e
 
 ### ThemeToggle
 
-A toggle component that allows users to switch between light and dark themes.
+An elegant toggle component with smooth animations that morph between sun and moon icons when switching between light and dark themes.
 
 **Props:**
 
 - `size`: 'small' | 'medium' | 'large' (default: 'medium')
+
+**Features:**
+
+- Beautiful sun-to-moon icon morphing animation
+- Seamless transition between light and dark states
+- Subtle hover and click effects
+- Accessibility support with keyboard navigation
+- Automatically syncs with the current theme state
 
 **Example:**
 

@@ -9,7 +9,16 @@ The library includes the following components:
 - **Button**: Customizable button component with different variants and sizes
 - **Header**: Navigation header with customizable title and navigation items
 - **ThemeProvider**: Provider component for theme context and dark/light mode switching
-- **ThemeToggle**: Toggle component for switching between light and dark themes
+- **ThemeToggle**: Animated toggle component for switching between light and dark themes with elegant sun/moon morphing animation
+
+## Features
+
+- 🌓 **Beautiful Dark Mode Support**: Includes a stunning animated theme toggle that morphs between sun and moon icons
+- 🧩 **Framework Agnostic**: Core components built as web components that work across frameworks
+- 🔄 **Framework Wrappers**: Dedicated React and Vue wrappers for seamless integration
+- 📱 **Responsive Design**: All components work across desktop and mobile
+- ♿ **Accessibility**: ARIA support and keyboard navigation built-in
+- 🎨 **Themeable**: Easy customization with CSS variables
 
 ## Architecture
 

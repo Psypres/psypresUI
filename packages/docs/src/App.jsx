@@ -6,6 +6,7 @@ import {
   PsypresThemeProvider,
   PsypresThemeToggle 
 } from '@psypres/react';
+import DynamicThemeDemo from './components/DynamicThemeDemo';
 
 function App() {
   return (
@@ -103,6 +104,12 @@ function App() {
               <div className="component-example">
                 <PsypresThemeToggle size="large" />
                 <code>size="large"</code>
+              </div>
+            </div>
+            
+            <div className="component-row">
+              <div className="component-example large-example">
+                <DynamicThemeDemo />
               </div>
             </div>
           </div>

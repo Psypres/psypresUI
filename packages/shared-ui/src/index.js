@@ -1,15 +1,27 @@
-export { PsypresButton } from './Button.js';
-export { PsypresCard } from './Card.js';
-export { PsypresHeader } from './Header.js';
+export { PsypresButton } from './components/Button.js';
+export { PsypresCard } from './components/Card.js';
+export { PsypresHeader } from './components/Header.js';
 export { 
   PsypresThemeProvider, 
   LIGHT_THEME, 
   DARK_THEME, 
   THEME_CHANGE_EVENT,
   dispatchThemeChangeEvent 
-} from './ThemeProvider.js';
-export { PsypresThemeToggle } from './ThemeToggle.js';
+} from './components/ThemeProvider.js';
+export { PsypresThemeToggle } from './components/ThemeToggle.js';
+export { ThemeUtils } from './themes/ThemeUtils.js';
+
+// Color utilities
+export {
+  getContrastColor,
+  calculateLuminance,
+  adjustBrightness,
+  createColorPalette
+} from './utils/color.js';
+
+// Showcase components
+export { default as DynamicThemeDemo } from './showcase/DynamicThemeDemo.js';
 
 // You can add more components here as you develop them
-// export { PsypresInput } from './Input.js';
+// export { PsypresInput } from './components/Input.js';
 // etc. 

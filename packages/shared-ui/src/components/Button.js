@@ -1,3 +1,5 @@
+import '../themes/theme.css';
+
 export class PsypresButton extends HTMLElement {
   constructor() {
     super();
@@ -51,7 +53,7 @@ export class PsypresButton extends HTMLElement {
       .button {
         font-family: 'Arial', sans-serif;
         border: none;
-        border-radius: 4px;
+        border-radius: var(--psypres-button-border-radius, 4px);
         cursor: pointer;
         transition: all 0.2s ease;
         font-weight: 600;
@@ -59,7 +61,7 @@ export class PsypresButton extends HTMLElement {
       
       .button:focus {
         outline: none;
-        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+        box-shadow: 0 0 0 3px var(--psypres-button-focus-ring-color, rgba(66, 153, 225, 0.5));
       }
       
       .button:disabled {
@@ -69,27 +71,49 @@ export class PsypresButton extends HTMLElement {
       
       /* Variants */
       .button.primary {
-        background-color: #4299e1;
-        color: white;
+        background-color: var(--psypres-primary-color);
+        color: var(--psypres-primary-text);
       }
       
       .button.primary:hover:not(:disabled) {
-        background-color: #3182ce;
+        background-color: var(--psypres-primary-color);
+        filter: brightness(0.9);
       }
       
       .button.secondary {
-        background-color: #a0aec0;
-        color: white;
+        background-color: var(--psypres-secondary-color);
+        color: var(--psypres-secondary-text);
       }
       
       .button.secondary:hover:not(:disabled) {
-        background-color: #718096;
+        background-color: var(--psypres-secondary-color);
+        filter: brightness(0.9);
+      }
+      
+      .button.success {
+        background-color: var(--psypres-success-color);
+        color: var(--psypres-success-text);
+      }
+      
+      .button.success:hover:not(:disabled) {
+        background-color: var(--psypres-success-color);
+        filter: brightness(0.9);
+      }
+      
+      .button.danger {
+        background-color: var(--psypres-danger-color);
+        color: var(--psypres-danger-text);
+      }
+      
+      .button.danger:hover:not(:disabled) {
+        background-color: var(--psypres-danger-color);
+        filter: brightness(0.9);
       }
       
       .button.outline {
         background-color: transparent;
-        color: #4299e1;
-        border: 1px solid #4299e1;
+        color: var(--psypres-primary-color);
+        border: 1px solid var(--psypres-primary-color);
       }
       
       .button.outline:hover:not(:disabled) {
