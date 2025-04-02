@@ -1,0 +1,22 @@
+{
+  "name": "@psypres/docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@psypres/react": "1.0.0",
+    "@psypres/vue": "1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.4.9"
+  }
+} 
