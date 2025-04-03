@@ -5,7 +5,8 @@ import {
   PsypresHeader,
   PsypresThemeProvider,
   PsypresThemeToggle,
-  PsypresModal
+  PsypresModal,
+  FormDemo
 } from '@psypres/react';
 import DynamicThemeDemo from './components/DynamicThemeDemo';
 
@@ -123,6 +124,18 @@ function App() {
             <div className="component-row">
               <div className="component-example large-example">
                 <ModalExample />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Form Components</h2>
+          <div className="component-demo">
+            <h3>Form Examples</h3>
+            <div className="component-row">
+              <div className="component-example wide-example">
+                <FormDemo />
               </div>
             </div>
           </div>

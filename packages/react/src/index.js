@@ -4,6 +4,7 @@ export { default as PsypresHeader } from './Header';
 export { default as PsypresThemeProvider } from './ThemeProvider';
 export { default as PsypresThemeToggle } from './ThemeToggle';
 export { default as PsypresModal } from './Modal';
+export { default as FormDemo } from './FormDemo';
 
 // Re-export theme utilities from shared-ui
 import { 
@@ -15,7 +16,10 @@ import {
   LIGHT_THEME,
   DARK_THEME,
   THEME_CHANGE_EVENT,
-  dispatchThemeChangeEvent
+  dispatchThemeChangeEvent,
+  // Showcase components
+  DynamicThemeDemo,
+  ModalDemo
 } from '@psypres/shared-ui';
 
 export {
@@ -27,5 +31,8 @@ export {
   LIGHT_THEME,
   DARK_THEME,
   THEME_CHANGE_EVENT,
-  dispatchThemeChangeEvent
+  dispatchThemeChangeEvent,
+  // Showcase components
+  DynamicThemeDemo,
+  ModalDemo
 };
