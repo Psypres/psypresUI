@@ -1,0 +1,29 @@
+@import '../../../themes/theme.css';
+
+:host {
+  display: block;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.card.primary {
+  border-top: 4px solid var(--psypres-primary-color, #4299e1);
+}
+
+.card.secondary {
+  border-top: 4px solid var(--psypres-secondary-color, #a0aec0);
+}
+
+.card.success {
+  border-top: 4px solid var(--psypres-success-color, #48bb78);
+}
+
+.card.danger {
+  border-top: 4px solid var(--psypres-danger-color, #f56565);
+} 

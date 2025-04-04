@@ -1,4 +1,4 @@
-import '../themes/theme.css';
+import './modal.css';
 
 export class PsypresModal extends HTMLElement {
   constructor() {
@@ -127,99 +127,10 @@ export class PsypresModal extends HTMLElement {
     document.removeEventListener('keydown', this._handleKeyDown);
   }
 
-  _getStyles() {
-    const width = this.size === 'small' ? '300px' : 
-                 this.size === 'medium' ? '500px' : 
-                 this.size === 'large' ? '800px' : 'auto';
-    
-    return `
-      :host {
-        display: contents;
-      }
-      
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-      }
-      
-      .modal-overlay.open {
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      .modal-container {
-        width: ${width};
-        max-width: 90%;
-        max-height: 80vh;
-        background-color: var(--psypres-surface-color, #ffffff);
-        border-radius: 8px;
-        box-shadow: var(--psypres-shadow-lg);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .modal-header {
-        padding: 1rem;
-        border-bottom: 1px solid var(--psypres-border-color, #e2e8f0);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .modal-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin: 0;
-      }
-      
-      .modal-close {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-      }
-      
-      .modal-body {
-        padding: 1rem;
-        overflow-y: auto;
-        flex: 1;
-      }
-      
-      .modal-footer {
-        padding: 1rem;
-        border-top: 1px solid var(--psypres-border-color, #e2e8f0);
-        display: flex;
-        justify-content: flex-end;
-      }
-      
-      @media (max-width: 480px) {
-        .modal-container {
-          width: 100%;
-          height: 100%;
-          max-height: 100%;
-          border-radius: 0;
-        }
-      }
-    `;
-  }
-
   _render() {
     const hasHeader = this.title || !this.hideCloseButton;
     
     this._shadow.innerHTML = `
-      <style>${this._getStyles()}</style>
       <div class="modal-overlay ${this.open ? 'open' : ''}">
         <div class="modal-container" role="dialog" aria-modal="true">
           ${hasHeader ? `

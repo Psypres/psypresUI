@@ -1,4 +1,4 @@
-import '../themes/theme.css';
+import './form.css';
 
 export class PsypresForm extends HTMLElement {
   constructor() {
@@ -202,43 +202,8 @@ export class PsypresForm extends HTMLElement {
     });
   }
 
-  _getStyles() {
-    return `
-      :host {
-        display: block;
-        font-family: 'Arial', sans-serif;
-      }
-      
-      form {
-        width: 100%;
-      }
-      
-      .content-slot {
-        display: block;
-      }
-      
-      .form-${this.layout} {
-        width: 100%;
-      }
-      
-      .form-horizontal {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        align-items: flex-end;
-      }
-      
-      .form-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-      }
-    `;
-  }
-
   _render() {
     this._shadow.innerHTML = `
-      <style>${this._getStyles()}</style>
       <form class="form-${this.layout}" novalidate>
         <div class="content-slot">
           <slot></slot>

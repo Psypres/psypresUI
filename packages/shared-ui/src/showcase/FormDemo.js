@@ -3,7 +3,7 @@ import { PsypresFormInput } from '../components/FormInput.js';
 import { PsypresFormTextarea } from '../components/FormTextarea.js';
 import { PsypresFormSelect } from '../components/FormSelect.js';
 import { PsypresFormCheckbox } from '../components/FormCheckbox.js';
-import { PsypresButton } from '../components/Button.js';
+import { PsypresButton } from '../components/actions/Button';
 
 export default class FormDemo extends HTMLElement {
   constructor() {

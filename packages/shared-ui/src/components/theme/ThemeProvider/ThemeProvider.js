@@ -1,7 +1,7 @@
-// Theme event for communication between components
-import '../themes/theme.css';
-import { ThemeUtils } from '../themes/ThemeUtils.js';
+import './themeProvider.css';
+import { ThemeUtils } from '../../../themes/ThemeUtils.js';
 
+// Theme event for communication between components
 export const THEME_CHANGE_EVENT = 'psypres-theme-change';
 
 // Theme constants
@@ -122,17 +122,8 @@ export class PsypresThemeProvider extends HTMLElement {
     this._render();
   }
 
-  _getStyles() {
-    return `
-      :host {
-        display: contents;
-      }
-    `;
-  }
-
   _render() {
     this._shadow.innerHTML = `
-      <style>${this._getStyles()}</style>
       <slot></slot>
     `;
   }
@@ -140,5 +131,4 @@ export class PsypresThemeProvider extends HTMLElement {
 
 // Define the custom element
 if (!customElements.get('psypres-theme-provider')) {
-  customElements.define('psypres-theme-provider', PsypresThemeProvider);
-} 
+  customElements.define('psypres-theme-provider', PsypresThemeProvider); 

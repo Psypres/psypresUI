@@ -1,0 +1,31 @@
+@import '../../../themes/theme.css';
+
+:host {
+  display: block;
+  font-family: 'Arial', sans-serif;
+}
+
+form {
+  width: 100%;
+}
+
+.content-slot {
+  display: block;
+}
+
+.form-vertical {
+  width: 100%;
+}
+
+.form-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+} 

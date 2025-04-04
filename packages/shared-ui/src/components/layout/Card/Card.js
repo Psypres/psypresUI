@@ -1,3 +1,5 @@
+import './card.css';
+
 export class PsypresCard extends HTMLElement {
   constructor() {
     super();
@@ -21,41 +23,8 @@ export class PsypresCard extends HTMLElement {
     this._render();
   }
 
-  _getStyles() {
-    return `
-      :host {
-        display: block;
-      }
-      
-      .card {
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        padding: 1.5rem;
-        overflow: hidden;
-      }
-      
-      .card.primary {
-        border-top: 4px solid #4299e1;
-      }
-      
-      .card.secondary {
-        border-top: 4px solid #a0aec0;
-      }
-      
-      .card.success {
-        border-top: 4px solid #48bb78;
-      }
-      
-      .card.danger {
-        border-top: 4px solid #f56565;
-      }
-    `;
-  }
-
   _render() {
     this._shadow.innerHTML = `
-      <style>${this._getStyles()}</style>
       <div class="card ${this.variant}">
         <slot></slot>
       </div>
