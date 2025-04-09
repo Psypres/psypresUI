@@ -1,0 +1,1 @@
+export { PsypresFormCheckbox } from './FormCheckbox'; 

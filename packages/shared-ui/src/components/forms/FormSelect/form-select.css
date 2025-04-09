@@ -1,0 +1,50 @@
+@import '../../../themes/theme.css';
+
+/* Form select component specific styles */
+:host {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form-select-container {
+  position: relative;
+  width: 100%;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--psypres-border-color, #e2e8f0);
+  border-radius: 4px;
+  background-color: var(--psypres-surface-color, #ffffff);
+  color: var(--psypres-text-color, #333333);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23718096' d='M6 8.825L1.175 4 2.238 2.938 6 6.7l3.763-3.763L10.825 4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--psypres-primary-color, #4299e1);
+  box-shadow: 0 0 0 3px var(--psypres-button-focus-ring-color, rgba(66, 153, 225, 0.5));
+}
+
+.form-select:disabled {
+  background-color: var(--psypres-bg-color, #f7fafc);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.form-select option {
+  color: var(--psypres-text-color, #333333);
+  background-color: var(--psypres-surface-color, #ffffff);
+} 

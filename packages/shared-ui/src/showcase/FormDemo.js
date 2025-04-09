@@ -1,8 +1,8 @@
-import { PsypresForm } from '../components/Form.js';
-import { PsypresFormInput } from '../components/FormInput.js';
-import { PsypresFormTextarea } from '../components/FormTextarea.js';
-import { PsypresFormSelect } from '../components/FormSelect.js';
-import { PsypresFormCheckbox } from '../components/FormCheckbox.js';
+import { PsypresForm } from '../components/forms/Form/Form.js';
+import { PsypresFormInput } from '../components/forms/FormInput/FormInput.js';
+import { PsypresFormTextarea } from '../components/forms/FormTextarea/FormTextarea.js';
+import { PsypresFormSelect } from '../components/forms/FormSelect/FormSelect.js';
+import { PsypresFormCheckbox } from '../components/forms/FormCheckbox/FormCheckbox.js';
 import { PsypresButton } from '../components/actions/Button';
 
 export default class FormDemo extends HTMLElement {

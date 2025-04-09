@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { 
   PsypresButton, 
@@ -6,11 +6,19 @@ import {
   PsypresThemeProvider,
   PsypresThemeToggle,
   PsypresModal,
-  FormDemo
+  FormDemo,
+  ThemeUtils,
+  ButtonDemo
 } from '@psypres/react';
 import DynamicThemeDemo from './components/DynamicThemeDemo';
 
 function App() {
+  // Force theme initialization
+  useEffect(() => {
+    ThemeUtils.applyContrastColors();
+    console.log('Initialized theme colors');
+  }, []);
+
   return (
     <PsypresThemeProvider>
       <div className="app">
@@ -85,6 +93,13 @@ function App() {
               <div className="component-example">
                 <PsypresButton size="large">Large</PsypresButton>
                 <code>size="large"</code>
+              </div>
+            </div>
+            
+            <h3>Themed Button Demo</h3>
+            <div className="component-row">
+              <div className="component-example large-example">
+                <ButtonDemo />
               </div>
             </div>
           </div>

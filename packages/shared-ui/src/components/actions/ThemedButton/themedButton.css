@@ -1,0 +1,53 @@
+@import '../../../themes/theme.css';
+
+/* Themed Button component specific styles */
+:host {
+  display: inline-block;
+}
+
+.themed-button {
+  font-family: 'Arial', sans-serif;
+  border: none;
+  border-radius: var(--psypres-button-border-radius, 4px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themed-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--psypres-button-focus-ring-color, rgba(66, 153, 225, 0.5));
+}
+
+.themed-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hover effects */
+.themed-button:not(.outline):hover:not(:disabled) {
+  filter: brightness(0.9);
+}
+
+.themed-button.outline:hover:not(:disabled) {
+  background-color: rgba(66, 153, 225, 0.1);
+}
+
+/* Sizes */
+.themed-button.small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.themed-button.medium {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.themed-button.large {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+} 

@@ -25,10 +25,40 @@ export default class DynamicThemeDemo extends HTMLElement {
     });
     
     applyButton.addEventListener('click', () => {
+      console.log('Apply button clicked, setting color to:', this._baseColor);
+      
       // Set CSS variables dynamically
       document.documentElement.style.setProperty('--psypres-primary-color', this._baseColor);
       // Recalculate contrast colors
       ThemeUtils.applyContrastColors();
+      
+      // Dispatch theme change event
+      console.log('Dispatching psypres-theme-change event');
+      window.dispatchEvent(new CustomEvent('psypres-theme-change', {
+        detail: { 
+          primaryColor: this._baseColor,
+          colorPalette: this._colorPalette
+        }
+      }));
+      
+      // Also try to directly update the buttons
+      this._directlyUpdateButtons();
+    });
+  }
+  
+  _directlyUpdateButtons() {
+    console.log('Directly updating buttons');
+    const buttons = this._shadow.querySelectorAll('psypres-button');
+    console.log('Found buttons:', buttons.length);
+    
+    buttons.forEach(button => {
+      console.log('Updating button:', button);
+      // Force a re-render by temporarily changing and restoring an attribute
+      const currentVariant = button.variant;
+      button.setAttribute('variant', 'temp');
+      setTimeout(() => {
+        button.setAttribute('variant', currentVariant);
+      }, 0);
     });
   }
   

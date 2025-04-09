@@ -1,5 +1,5 @@
 import { PsypresButton } from '../components/actions/Button';
-import { PsypresModal } from '../components/Modal.js';
+import { PsypresModal } from '../components/overlays/Modal/Modal.js';
 
 export default class ModalDemo extends HTMLElement {
   constructor() {

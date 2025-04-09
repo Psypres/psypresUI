@@ -26,49 +26,49 @@
 
 /* Variants */
 .button.primary {
-  background-color: var(--psypres-primary-color);
-  color: var(--psypres-primary-text);
+  background-color: var(--psypres-primary-color, #4299e1);
+  color: var(--psypres-primary-text, #ffffff);
 }
 
 .button.primary:hover:not(:disabled) {
-  background-color: var(--psypres-primary-color);
+  background-color: var(--psypres-primary-color, #4299e1);
   filter: brightness(0.9);
 }
 
 .button.secondary {
-  background-color: var(--psypres-secondary-color);
-  color: var(--psypres-secondary-text);
+  background-color: var(--psypres-secondary-color, #a0aec0);
+  color: var(--psypres-secondary-text, #ffffff);
 }
 
 .button.secondary:hover:not(:disabled) {
-  background-color: var(--psypres-secondary-color);
+  background-color: var(--psypres-secondary-color, #a0aec0);
   filter: brightness(0.9);
 }
 
 .button.success {
-  background-color: var(--psypres-success-color);
-  color: var(--psypres-success-text);
+  background-color: var(--psypres-success-color, #48bb78);
+  color: var(--psypres-success-text, #ffffff);
 }
 
 .button.success:hover:not(:disabled) {
-  background-color: var(--psypres-success-color);
+  background-color: var(--psypres-success-color, #48bb78);
   filter: brightness(0.9);
 }
 
 .button.danger {
-  background-color: var(--psypres-danger-color);
-  color: var(--psypres-danger-text);
+  background-color: var(--psypres-danger-color, #f56565);
+  color: var(--psypres-danger-text, #ffffff);
 }
 
 .button.danger:hover:not(:disabled) {
-  background-color: var(--psypres-danger-color);
+  background-color: var(--psypres-danger-color, #f56565);
   filter: brightness(0.9);
 }
 
 .button.outline {
   background-color: transparent;
-  color: var(--psypres-primary-color);
-  border: 1px solid var(--psypres-primary-color);
+  color: var(--psypres-primary-color, #4299e1);
+  border: 1px solid var(--psypres-primary-color, #4299e1);
 }
 
 .button.outline:hover:not(:disabled) {

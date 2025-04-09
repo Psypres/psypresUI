@@ -132,3 +132,4 @@ export class PsypresThemeProvider extends HTMLElement {
 // Define the custom element
 if (!customElements.get('psypres-theme-provider')) {
   customElements.define('psypres-theme-provider', PsypresThemeProvider); 
+} 

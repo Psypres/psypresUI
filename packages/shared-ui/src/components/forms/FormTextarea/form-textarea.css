@@ -1,0 +1,42 @@
+@import '../../../themes/theme.css';
+
+/* Form textarea component specific styles */
+:host {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form-textarea-container {
+  position: relative;
+  width: 100%;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--psypres-border-color, #e2e8f0);
+  border-radius: 4px;
+  background-color: var(--psypres-surface-color, #ffffff);
+  color: var(--psypres-text-color, #333333);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--psypres-primary-color, #4299e1);
+  box-shadow: 0 0 0 3px var(--psypres-button-focus-ring-color, rgba(66, 153, 225, 0.5));
+}
+
+.form-textarea:disabled {
+  background-color: var(--psypres-bg-color, #f7fafc);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.form-textarea::placeholder {
+  color: #a0aec0;
+} 

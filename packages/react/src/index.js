@@ -5,6 +5,7 @@ export { default as PsypresThemeProvider } from './ThemeProvider';
 export { default as PsypresThemeToggle } from './ThemeToggle';
 export { default as PsypresModal } from './Modal';
 export { default as FormDemo } from './FormDemo';
+export { default as ButtonDemo } from './ButtonDemo';
 
 // Re-export theme utilities from shared-ui
 import { 
